@@ -1,1 +1,3 @@
 docker run -itd -p 8085:8080 -v /var/docker/jenkins:/var/jenkins_home --name jenkins -u root codesheep09/jenkins
+
+docker run -itd -p 8085:8080 -v /var/run/docker.sock:/var/run/docker.sock  -v /var/docker/jenkins:/var/jenkins_home --name jenkins codesheep09/jenkins
