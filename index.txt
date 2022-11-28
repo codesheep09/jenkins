@@ -4,3 +4,5 @@ docker run -itd -p 8085:8080 -v /var/run/docker.sock:/var/run/docker.sock  -v /v
 
 docker run -d -p 8085:8080 -v /var/run/docker.sock:/var/run/docker.sock  -v /var/
 docker/jenkins:/var/jenkins_home --name jenkins --add-host host.docker.internal:host-gateway codesheep09/jenkins
+
+docker run -d -p 8085:8080 --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /var/run/docker.sock:/var/run/docker.sock  -v /var/docker/jenkins:/var/jenkins_home --name jenkins --add-host host.docker.internal:host-gateway codesheep09/jenkins
