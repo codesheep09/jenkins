@@ -1,0 +1,34 @@
+1. jenkins 설치
+  -ssh-keygen
+  -개인키 등록
+  -apt-get update
+  -apt-get install vim
+  -apt-get install net-tools (ifconfig)
+  -apt-get install iputils-ping (ping)
+
+2. gitlab 설치
+  -공개키 등록
+  -apt-get update
+  -apt-get install curl
+
+3. jenkins 아이템 등록
+  -gitlab repository 에 push시,
+   쉘스크립트 실행 (scp를 이용하여 stage서버로 파일복사)
+  -빌드유발 => gitLab webhook 설정
+    -(webhook url, secret token) gitlab webhook 설정에 넣기 (gitlab - Settings > Webhooks)
+    -gitlab에서 Add webhook 했는데 "url is blocked : requests to localhost are not allowed" 에러 발생시
+      -https://jongsun.tistory.com/6 참고
+  -Build steps에서 실행할 shell 명세
+
+  [사전작업]
+  -jenkins에서 git repository에 접근해야하기 때문에
+   gitlab-compose.mgm.io 도메인을 hosts파일에 등록해야함.
+   ex) ssh://git@gitlab-compose.mgm.io:8306/codesheep09/moongori.git 일때
+   jenkins 컨테이너에서 gitlab 컨테이너를 바라봐야한다.
+   jenkins 컨테이너 hosts 파일에 gitlab 컨테이너 아이피화 호스트네임을 지정해준다.
+    -컨테이너간 연결이 안된다면, 호스트를 통해 연결한다.(host > hosts파일에 추가)
+      (단, 호스트 웹서버 연결정보에 프록시를 통해 gitlab 컨테이너를 바라보게 설정해야함)
+
+4. 
+
+http://gitlab-compose.mgm.io/codesheep09/moongori.git
